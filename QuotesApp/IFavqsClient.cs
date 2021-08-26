@@ -11,7 +11,7 @@ namespace QuotesApp
 {
     interface IFavqsClient
     {
-        Task<QuoteResponseModel> GetAllQuotes();
+        Task<QuoteResponseModel> GetAllQuotes(int page);
 
         Task<Quote> GetQuote(int id);
 

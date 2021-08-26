@@ -79,11 +79,24 @@ namespace QuotesApp
                             switch (chosenCommand)
                             {
                                 case "1":
-                                    var quotes = await _favqsClient.GetAllQuotes();
+                                    var quotesDefault = await _favqsClient.GetAllQuotes(1);
 
-                                    Console.WriteLine(quotes);
+                                    Console.WriteLine(quotesDefault);
 
-                                    foreach (var quoteResponseModel in quotes.Quotes)
+                                    foreach (var quoteResponseModel in quotesDefault.Quotes)
+                                    {
+                                        Console.WriteLine(quoteResponseModel);
+                                    }
+
+                                    Console.WriteLine("Enter page number to see: ");
+
+                                    var page = Convert.ToInt32(Console.ReadLine());
+
+                                    var quotesByUser = await _favqsClient.GetAllQuotes(page);
+
+                                    Console.WriteLine(quotesByUser);
+
+                                    foreach (var quoteResponseModel in quotesByUser.Quotes)
                                     {
                                         Console.WriteLine(quoteResponseModel);
                                     }

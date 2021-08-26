@@ -85,9 +85,9 @@ namespace QuotesApp
             return _httpClient.GetFromJsonAsync<Quote>(url);
         }
 
-        public Task<QuoteResponseModel> GetAllQuotes()
+        public Task<QuoteResponseModel> GetAllQuotes(int page)
         {
-            var url = "/api/quotes";
+            var url = $"/api/quotes?page={page}";
 
             return _httpClient.GetFromJsonAsync<QuoteResponseModel>(url);
         }
